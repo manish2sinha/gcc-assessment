@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCC Readiness Assessment — Manish Sinha</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg2:#f7f6f3;--t1:#1a1a1a;--t2:#555550;--t3:#999990;--b1:rgba(0,0,0,.1);--b2:rgba(0,0,0,.18);--r:8px;--rl:12px}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--bg2:#242424;--t1:#f0ede8;--t2:#a8a49e;--t3:#666660;--b1:rgba(255,255,255,.1);--b2:rgba(255,255,255,.18)}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;min-height:100vh}
+.page{max-width:600px;margin:0 auto;padding:3rem 1.5rem 5rem}
+.screen{animation:fu .3s ease both}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ey{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:1.25rem}
+.ti{font-size:clamp(22px,4vw,28px);font-weight:500;line-height:1.3;margin-bottom:1rem}
+.su{font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:.75rem}
+.no{font-size:13px;color:var(--t3);line-height:1.65;margin-top:1.75rem;padding-top:1.75rem;border-top:.5px solid var(--b1)}
+.bp{display:inline-block;margin-top:2rem;background:var(--t1);color:var(--bg);border:none;border-radius:var(--r);padding:13px 30px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s;text-decoration:none}
+.bp:hover{opacity:.8}
+.bc{display:inline-block;background:var(--t1);color:var(--bg);border:none;border-radius:var(--r);padding:13px 28px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s;text-decoration:none}
+.bc:hover{opacity:.8}
+.bs{display:inline-block;background:transparent;color:var(--t2);border:.5px solid var(--b2);border-radius:var(--r);padding:10px 22px;font-size:13px;cursor:pointer;font-family:inherit;transition:all .15s;text-decoration:none}
+.bs:hover{color:var(--t1);border-color:var(--t3)}
+.pw{margin-bottom:3rem}
+.pt{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.pl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.pc{font-size:12px;color:var(--t3)}
+.pk{height:2px;background:var(--b1);border-radius:2px;overflow:hidden}
+.pf{height:100%;background:var(--t1);border-radius:2px;transition:width .4s ease}
+.qd{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:.75rem}
+.qt{font-size:clamp(17px,3vw,20px);color:var(--t1);line-height:1.55;margin-bottom:2.5rem;font-style:italic}
+.qo{display:flex;flex-direction:column;gap:10px}
+.qb{width:100%;padding:14px 18px;border:.5px solid var(--b1);border-radius:var(--rl);background:var(--bg);color:var(--t2);font-size:14px;text-align:left;cursor:pointer;transition:all .15s;font-family:inherit;display:flex;align-items:center;gap:12px}
+.qb:hover{border-color:var(--b2);color:var(--t1);background:var(--bg2)}
+.qb.sel{background:var(--t1);color:var(--bg);border-color:var(--t1)}
+.od{width:8px;height:8px;border-radius:50%;border:1px solid currentColor;flex-shrink:0;opacity:.5}
+.qb.sel .od{background:var(--bg);opacity:1}
+.nr{display:flex;align-items:center;justify-content:space-between;margin-top:2rem}
+.bk{background:none;border:none;color:var(--t3);font-size:13px;cursor:pointer;font-family:inherit;padding:0;transition:color .15s}
+.bk:hover{color:var(--t2)}
+.qln{font-size:clamp(17px,3vw,20px);color:var(--t1);line-height:1.55;margin-bottom:.5rem;font-style:italic}
+.qs{font-size:13px;color:var(--t3);margin-bottom:1.75rem}
+.ta{width:100%;border:.5px solid var(--b2);border-radius:var(--rl);padding:14px 16px;font-size:15px;font-family:inherit;color:var(--t1);background:var(--bg);resize:none;line-height:1.65;transition:border-color .15s}
+.ta:focus{outline:none;border-color:var(--t3)}
+.ta::placeholder{color:var(--t3)}
+.qn{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem}
+.gw{padding:5rem 0;text-align:center}
+.gl{font-size:15px;color:var(--t2);margin-bottom:1.5rem}
+.gd{display:flex;gap:7px;justify-content:center}
+.gdt{width:6px;height:6px;border-radius:50%;background:var(--t3);animation:pu 1.2s ease-in-out infinite}
+.gdt:nth-child(2){animation-delay:.2s}
+.gdt:nth-child(3){animation-delay:.4s}
+@keyframes pu{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.po{font-size:clamp(20px,3.5vw,24px);font-weight:500;line-height:1.4;margin-bottom:2rem;padding-bottom:2rem;border-bottom:.5px solid var(--b1)}
+.sl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:1rem}
+.gi{margin-bottom:1rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rl)}
+.gn{font-size:11px;font-weight:500;color:var(--t2);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em}
+.gx{font-size:14px;color:var(--t1);line-height:1.65}
+.dv{margin:2rem 0;border:none;border-top:.5px solid var(--b1)}
+.tt{font-size:14px;color:var(--t1);line-height:1.7;padding:1rem 1.25rem;border-left:2px solid var(--b2);background:var(--bg2);border-radius:0 var(--r) var(--r) 0}
+.rf{font-size:15px;color:var(--t2);line-height:1.75;font-style:italic}
+.cb{margin-top:2.5rem;padding:1.75rem;border:.5px solid var(--b1);border-radius:var(--rl);background:var(--bg2)}
+.cn{font-size:13px;font-weight:500;margin-bottom:.3rem}
+.cr{font-size:12px;color:var(--t3);margin-bottom:1rem}
+.ct{font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:1.25rem}
+.cbs{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.eb{margin-top:2rem;padding:1.75rem;border:.5px solid var(--b1);border-radius:var(--rl)}
+.et{font-size:13px;font-weight:500;margin-bottom:.3rem}
+.es{font-size:13px;color:var(--t3);margin-bottom:1.25rem;line-height:1.6}
+.ef{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem}
+.ei{width:100%;border:.5px solid var(--b2);border-radius:var(--r);padding:11px 14px;font-size:14px;font-family:inherit;color:var(--t1);background:var(--bg);transition:border-color .15s}
+.ei:focus{outline:none;border-color:var(--t3)}
+.ei::placeholder{color:var(--t3)}
+.em{font-size:13px;margin-top:.75rem;line-height:1.5}
+.em.ok{color:#3B6D11}
+.em.err{color:#A32D2D}
+.rl{font-size:13px;color:var(--t3);background:none;border:none;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;text-underline-offset:3px}
+.rl:hover{color:var(--t2)}
+@media(max-width:480px){.page{padding:2rem 1rem 4rem}.qb{padding:12px 14px}}
+</style>
+</head>
+<body>
+<div class="page" id="app"></div>
+<script>
+const ANTHROPIC_API_KEY   = 'YOUR_ANTHROPIC_API_KEY';
+const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = 'YOUR_EMAILJS_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+
+const Qs = [
+  {id:1,d:'Mandate Clarity',t:'The parent organization and my GCC share the same view of what this GCC is here to do — and that view has evolved beyond cost.'},
+  {id:2,d:'Structural Fit',t:'The way my GCC is structured today was designed for where we were, not where we are going.'},
+  {id:3,d:'People Manager Stretch',t:'My people managers are operating within spans and layers the structure was designed to support — not holding things together despite it.'},
+  {id:4,d:'Role & Accountability Clarity',t:'People in my GCC know what good looks like in their role. Accountability does not blur at the boundaries.'},
+  {id:5,d:'Decision Velocity',t:'Decisions that should be made here are made here, at the right level, without unnecessary escalation or delay.'},
+  {id:6,d:'Leadership Bench',t:'I have leaders ready to step into the next level of responsibility. The bench is real, not assumed.'},
+  {id:7,d:'Attrition as a Signal',t:'When good people leave, it is not because of structural frustration — unclear roles, stretched managers, or limited growth paths.'},
+  {id:8,d:'Governance & Autonomy',t:'My GCC has the authority to make structural and people decisions without routinely waiting on the global organization.'},
+  {id:9,d:'Delivery as a Structural Outcome',t:'Delivery quality in my GCC is a function of how we are organized, not just how hard people work.'}
+];
+const SC = ['Rarely true','Sometimes true','Mostly true','Consistently true'];
+let S = {screen:'intro',cur:0,ans:{},qual:'',result:null};
+
+function R(){
+  const m={intro:rI,question:rQ,qual:rQl,generating:rG,results:rRes};
+  document.getElementById('app').innerHTML=(m[S.screen]||rI)();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function rI(){return`<div class="screen"><p class="ey">Manish Sinha · GCC Organization Design</p><h1 class="ti">Is your GCC structurally ready for the next phase?</h1><p class="su">Many GCCs reach a point where the structure built for one phase of growth is being asked to perform in the next. This assessment helps you see clearly where you are.</p><p class="su">Nine statements. Four honest options. A personalized read on what is working, what is not, and where the real gap is.</p><p class="no">Takes about 4 minutes. Best completed by the GCC leader or a senior member of the leadership team. No scores, no tiers — just a direct, qualitative assessment.</p><button class="bp" onclick="go()">Begin assessment</button></div>`;}
+function rQ(){
+  const q=Qs[S.cur],p=(S.cur/Qs.length)*100,sel=S.ans[q.id];
+  return`<div class="screen"><div class="pw"><div class="pt"><span class="pl">GCC Readiness Assessment</span><span class="pc">${S.cur+1} of ${Qs.length}</span></div><div class="pk"><div class="pf" style="width:${p}%"></div></div></div><p class="qd">${q.d}</p><p class="qt">${q.t}</p><div class="qo">${SC.map(s=>`<button class="qb${sel===s?' sel':''}" onclick="pick(${q.id},'${s}')"><span class="od"></span>${s}</button>`).join('')}</div><div class="nr"><button class="bk" onclick="back()">${S.cur===0?'Back to start':'Previous'}</button>${sel?`<button class="bp" style="margin-top:0" onclick="nxt()">Next</button>`:`<span style="font-size:13px;color:var(--t3)">Select an option to continue</span>`}</div></div>`;
+}
+function rQl(){return`<div class="screen"><div class="pw"><div class="pt"><span class="pl">GCC Readiness Assessment</span><span class="pc">Final question</span></div><div class="pk"><div class="pf" style="width:100%"></div></div></div><p class="qd">Open reflection</p><p class="qln">What is the one structural problem in your GCC that you have not been able to solve from within?</p><p class="qs">Optional. Your answer shapes the final reflection in your assessment.</p><textarea class="ta" rows="4" placeholder="Write freely..." id="qi" oninput="S.qual=this.value">${S.qual}</textarea><div class="qn"><button class="bk" onclick="back()">Previous</button><button class="bp" style="margin-top:0" onclick="submit()">Get my assessment</button></div></div>`;}
+function rG(){return`<div class="screen gw"><p class="gl">Reading your responses</p><div class="gd"><div class="gdt"></div><div class="gdt"></div><div class="gdt"></div></div></div>`;}
+function rRes(){
+  if(!S.result)return`<div class="screen" style="padding:3rem 0;text-align:center;color:var(--t2)">Something went wrong. Please try again.</div>`;
+  const r=S.result;
+  let h=`<div class="screen"><p class="ey">Your assessment</p><p class="po">${r.posture}</p>`;
+  if(r.gaps&&r.gaps.length){h+=`<p class="sl">Where attention is needed</p>`;r.gaps.forEach(g=>{h+=`<div class="gi"><p class="gn">${g.dimension}</p><p class="gx">${g.insight}</p></div>`;});}
+  if(r.tension)h+=`<hr class="dv"><p class="sl">A tension worth naming</p><p class="tt">${r.tension}</p>`;
+  if(r.reflection&&S.qual)h+=`<hr class="dv"><p class="sl">On what you said</p><p class="rf">${r.reflection}</p>`;
+  h+=`<hr class="dv"><div class="eb"><p class="et">Email this assessment</p><p class="es">Enter your details and we will send this to your inbox. Manish will receive a copy.</p><div class="ef"><input class="ei" type="text" id="cn" placeholder="Your name"/><input class="ei" type="email" id="ce" placeholder="Your email address"/></div><button class="bc" style="margin-top:0" onclick="sendMail(this)">Send assessment</button><p class="em" id="es2"></p></div><hr class="dv"><div class="cb"><p class="cn">Manish Sinha</p><p class="cr">GCC Organization Design Partner · Bangalore</p><p class="ct">If what you are reading here resonates, a direct conversation is the right next step. Most engagements begin with a 60 to 90 minute discovery conversation — no commitment, no agenda other than understanding whether there is a fit.</p><p style="font-size:12px;color:var(--t3);line-height:1.6;margin-bottom:1.25rem">This assessment is most relevant for GCCs in a scaling phase, typically between 200 and 500 people, where structural questions are building but dedicated senior design support is not yet in place.</p><div class="cbs"><a class="bc" href="mailto:manish@manishsinha.com?subject=GCC Assessment - Discovery Conversation">Schedule a conversation</a><a class="bs" href="https://linkedin.com/in/ManishSinhaHR" target="_blank">View profile</a></div></div><div style="margin-top:2rem"><button class="rl" onclick="retry()">Retake assessment</button></div></div>`;
+  return h;
+}
+
+function go(){S.screen='question';S.cur=0;R();}
+function back(){if(S.screen==='qual'){S.screen='question';S.cur=Qs.length-1;}else if(S.cur>0){S.cur--;}else{S.screen='intro';}R();}
+function nxt(){if(S.cur<Qs.length-1){S.cur++;}else{S.screen='qual';}R();}
+function pick(id,v){S.ans[id]=v;R();}
+
+async function submit(){
+  const qi=document.getElementById('qi');if(qi)S.qual=qi.value;
+  S.screen='generating';R();
+  const sum=Qs.map(q=>`${q.d}: "${q.t}" → ${S.ans[q.id]}`).join('\n');
+  const pr=`You are an expert advisor on Global Capability Centers with deep experience in organization design. Think like Manish Sinha — a GCC Organization Design Partner who works on structural questions: spans of control, layer design, role clarity, people manager stretch, decision velocity, and leadership bench strength.\n\nA GCC leader completed a structural readiness assessment:\n\n${sum}\n\nOpen-ended: "${S.qual||'Not provided'}"\n\nProvide a personalized qualitative assessment grounded in organization design. Use precise structural language — spans of control, layer misalignment, role ambiguity, manager stretch, structural drag, bench gaps. Be direct and honest. These are senior leaders who can handle the truth.\n\nRespond ONLY with valid JSON, no markdown:\n{"posture":"one sharp sentence under 12 words capturing their structural position","gaps":[{"dimension":"dimension name","insight":"1-2 sentences on what this structural gap means for them right now — consequence, not advice"}],"tension":"2 sentences naming a structural contradiction if one exists, else null","reflection":"one sentence connecting their open-ended answer to what their responses revealed structurally — only if they gave one"}\n\nRules: gaps only for Rarely true or Sometimes true responses, max 3. If mostly strong, surface the relative structural frontier. No jargon. No generic advice. Honest structural observation only.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':ANTHROPIC_API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-calls':'true'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:pr}]})});
+    const data=await res.json();
+    if(data.error)throw new Error(data.error.message);
+    S.result=JSON.parse(data.content.map(i=>i.text||'').join('').replace(/```json|```/g,'').trim());
+    S.screen='results';
+  }catch(e){
+    S.result={posture:'Could not generate your assessment.',gaps:[{dimension:'Error',insight:e.message||'Check your API key.'}],tension:null,reflection:null};
+    S.screen='results';
+  }
+  R();
+}
+
+async function sendMail(btn){
+  const name=document.getElementById('cn').value.trim();
+  const email=document.getElementById('ce').value.trim();
+  const st=document.getElementById('es2');
+  if(!email){st.className='em err';st.textContent='Please enter your email address.';return;}
+  btn.disabled=true;btn.textContent='Sending...';st.className='em';st.textContent='';
+  const r=S.result;
+  const txt=`${r.posture}\n\n${(r.gaps||[]).map(g=>g.dimension+': '+g.insight).join('\n\n')}${r.tension?'\n\nA tension worth naming:\n'+r.tension:''}${r.reflection&&S.qual?'\n\nOn what you said:\n'+r.reflection:''}`;
+  try{
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    await emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{to_name:name||'there',to_email:email,assessment:txt,posture:r.posture});
+    btn.textContent='Sent';st.className='em ok';st.textContent='Check your inbox. Manish has received a copy.';
+  }catch(e){
+    btn.disabled=false;btn.textContent='Send assessment';st.className='em err';st.textContent='Could not send. Please email manish@manishsinha.com directly.';
+  }
+}
+function retry(){S={screen:'intro',cur:0,ans:{},qual:'',result:null};R();}
+R();
+</script>
+</body>
+</html>
