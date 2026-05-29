@@ -134,15 +134,15 @@ const ANTHROPIC_API_KEY   = 'sk-ant-api03-g5gusshPZ1oBN-UPjdH0reA9ZLsuZLB3VmPauK
 // ───────────────────────────────────────────────────────────────────────────
 
 const Qs = [
-  { id:1, d:'Structural Fit for Mandate',      t:'The way my GCC is structured matches what it is being asked to deliver.' },
-  { id:2, d:'People Manager Stretch',          t:'My people managers are not stretched beyond what the structure was designed for.' },
-  { id:3, d:'Role & Accountability Clarity',   t:'People in my GCC know what they own. When something goes wrong, it is clear who is responsible.' },
-  { id:4, d:'Decision Velocity',               t:'Decisions that should be made here are made here. They do not escalate unnecessarily.' },
-  { id:5, d:'Attrition as a Signal',           t:'When strong people leave my GCC, structural frustration is not the reason.' },
-  { id:6, d:'Delivery as a Structural Outcome',t:'When delivery slips, I look at how we are organised. Not just at who is responsible.' },
-  { id:7, d:'Leadership Bench',                t:'I have the right leaders in place for where the GCC is going, not just where it has been.' },
-  { id:8, d:'Local HR Fit for Scale',          t:'The HR support available to my GCC is built for the organisational questions I am now dealing with. Not just day to day operations.' },
-  { id:9, d:'Governance & Autonomy',           t:'My GCC has enough autonomy to make structural and people decisions without waiting on the global organisation.' }
+  { id:1, d:'Structural Fit for Mandate',      t:'My GCC is structured to deliver what is expected of it.' },
+  { id:2, d:'People Manager Stretch',          t:'My people managers have the capacity to lead their teams effectively.' },
+  { id:3, d:'Role & Accountability Clarity',   t:'Roles and accountabilities in my GCC are clear. People know what they are responsible for.' },
+  { id:4, d:'Decision Velocity',               t:'Decisions are made at the right level. They do not escalate further than they should.' },
+  { id:5, d:'Attrition as a Signal',           t:'When strong people leave, it is not because of how the GCC is structured or managed.' },
+  { id:6, d:'Delivery as a Structural Outcome',t:'When delivery falls short, we examine how the organization is set up. Not just who is involved.' },
+  { id:7, d:'Leadership Bench',                t:'My leadership bench is ready for where the GCC is headed.' },
+  { id:8, d:'Local HR Fit for Scale',          t:'The HR function in my GCC is equipped to address the organizational challenges we face today.' },
+  { id:9, d:'Governance & Autonomy',           t:'My GCC has the authority to make structural and people decisions independently.' }
 ];
 
 const SC = ['Strongly disagree','Disagree','Agree','Strongly agree'];
@@ -192,7 +192,7 @@ function rQl() {
       <div class="pk"><div class="pf" style="width:100%"></div></div>
     </div>
     <p class="qd">One last question</p>
-    <p class="qln">What is the one structural problem in your GCC that you have not been able to solve from within?</p>
+    <p class="qln">What structural gaps do you believe exist in your GCC today? What has been most difficult to address from within?</p>
     <p class="qs">Optional. Your answer shapes the final reflection in your assessment.</p>
     <textarea class="ta" rows="4" placeholder="Write freely..." id="qi" oninput="S.qual=this.value">${S.qual}</textarea>
     <div class="qn">
@@ -292,7 +292,7 @@ A GCC leader has completed your structural readiness assessment. Here are their 
 
 ${sum}
 
-Their open-ended response to "What is the one structural problem in your GCC that you have not been able to solve from within?":
+Their open-ended response to "What structural gaps do you believe exist in your GCC today? What has been most difficult to address from within?":
 "${S.qual||'Not provided'}"
 
 Write a personalized structural assessment. Be direct and honest. Sound like an experienced advisor who has seen this before, not a tool generating output.
