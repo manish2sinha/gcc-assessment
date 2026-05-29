@@ -97,8 +97,8 @@ exports.handler = async function(event) {
                 <!-- Greeting -->
                 <tr>
                   <td style="padding: 36px 40px 24px; border-bottom: 1px solid #f0ede8;">
-                    <p style="margin: 0 0 8px; font-size: 15px; color: #555; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">${greeting}</p>
-                    <p style="margin: 0; font-size: 14px; color: #888; line-height: 1.65; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Here is your GCC structural assessment.</p>
+                    <p style="margin: 0 0 8px; font-size: 15px; color: #333; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Hi ${name || 'there'},</p>
+                    <p style="margin: 0; font-size: 14px; color: #666; line-height: 1.65; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Thank you for taking the time to complete the GCC Structural Assessment. Your personalized read is as below.</p>
                   </td>
                 </tr>
 
@@ -166,8 +166,11 @@ exports.handler = async function(event) {
                           <p style="margin: 0 0 2px; font-size: 14px; font-weight: 500; color: #f0ede8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Manish Sinha</p>
                           <p style="margin: 0 0 2px; font-size: 12px; color: rgba(255,255,255,0.4); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">GCC Organization Design Partner</p>
                           <p style="margin: 0 0 16px; font-size: 12px; color: rgba(255,255,255,0.4); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Bangalore</p>
-                          <a href="mailto:manish@manishsinha.com" style="display: block; margin-bottom: 4px; font-size: 12px; color: rgba(255,255,255,0.4); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; text-decoration: none;">manish@manishsinha.com</a>
-                          <a href="https://linkedin.com/in/ManishSinhaHR" style="display: block; font-size: 12px; color: rgba(255,255,255,0.4); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; text-decoration: none;">linkedin.com/in/ManishSinhaHR</a>
+                          <p style="margin: 0; font-size: 12px; color: rgba(255,255,255,0.4); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; line-height: 1.8;">
+                            <a href="mailto:manish@manishsinha.com" style="color: rgba(255,255,255,0.4); text-decoration: none;">manish@manishsinha.com</a> &nbsp;|&nbsp;
+                            <a href="https://www.linkedin.com/in/manishsinhahr" style="color: rgba(255,255,255,0.4); text-decoration: none;">linkedin.com/in/manishsinhahr</a> &nbsp;|&nbsp;
+                            +91 96200 27959
+                          </p>
                         </td>
                       </tr>
                     </table>
@@ -181,7 +184,7 @@ exports.handler = async function(event) {
           <!-- Footer -->
           <tr>
             <td style="padding: 24px 0; text-align: center;">
-              <p style="margin: 0; font-size: 11px; color: #bbb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">manish@manishsinha.com · linkedin.com/in/ManishSinhaHR</p>
+              <p style="margin: 0; font-size: 11px; color: #bbb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">manish@manishsinha.com · linkedin.com/in/manishsinhahr · +91 96200 27959</p>
             </td>
           </tr>
 
