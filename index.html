@@ -17,7 +17,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #141412; --bg2: #1e1e1c; --bg3: rgba(255,255,255,0.03);
-    --t1: #f0ede8; --t2: #a8a49e; --t3: #666660; --t4: #444;
+    --t1: #f0ede8; --t2: #c0bcb6; --t3: #888882; --t4: #aaa;
     --b1: rgba(255,255,255,0.08); --b2: rgba(255,255,255,0.14);
   }
 }
@@ -356,7 +356,7 @@ async function sendMail(btn) {
     r.posture,
     r.holding&&r.holding.length ? '\nWhat is holding:\n'+r.holding.map(g=>g.dimension+': '+g.insight).join('\n') : '',
     r.gaps&&r.gaps.length ? '\nWhere attention is needed:\n'+r.gaps.map(g=>g.dimension+': '+g.insight).join('\n') : '',
-    r.tension ? '\nA tension worth naming:\n'+r.tension : '',
+    r.tension ? '\nOne observation:\n'+r.tension : '',
     r.reflection&&S.qual ? '\nOn what you said:\n'+r.reflection : '',
     r.trajectory ? '\nIf left unaddressed:\n'+r.trajectory : ''
   ].filter(Boolean).join('\n');
